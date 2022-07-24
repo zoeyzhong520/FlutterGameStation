@@ -1,18 +1,23 @@
 // 首页（最新）
 
 import 'package:flutter/material.dart';
+import 'package:gamestation/main/homeModule/homrList.dart';
 import './homeModule/homeSwiper.dart';
+import './homeModule/homeGrid.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(
-      body: Column(
-        children: [
-          HomeSwiper(),
-          Text('首页'),
-        ],
+    return SingleChildScrollView(
+      child: Container(
+        child: Column(
+          children: [
+            HomeSwiper(),
+            HomeGrid(),
+            HomeList(),
+          ],
+        ),
       ),
     );
   }
