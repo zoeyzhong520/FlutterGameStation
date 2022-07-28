@@ -1,44 +1,40 @@
 // 首页网格
-
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:toast/toast.dart';
 
 class HomeGrid extends StatelessWidget {
+  final list = [
+    {'icon': Icon(CupertinoIcons.time), 'label': '最新'},
+    {'icon': Icon(CupertinoIcons.chart_bar), 'label': '排行榜'},
+    {'icon': Icon(CupertinoIcons.book), 'label': '阅读量'},
+    {'icon': Icon(CupertinoIcons.heart), 'label': '心愿'}
+  ];
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
-      color: Colors.blue,
+      color: Colors.blueGrey,
       height: 60,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          HomeGridItem(
-            config: {'icon': Icon(CupertinoIcons.time), 'label': '最新'},
-          ),
-          HomeGridItem(
-            config: {'icon': Icon(CupertinoIcons.chart_bar), 'label': '排行榜'},
-          ),
-          HomeGridItem(
-            config: {'icon': Icon(CupertinoIcons.book), 'label': '阅读量'},
-          ),
-          HomeGridItem(
-            config: {'icon': Icon(CupertinoIcons.heart), 'label': '心愿'},
-          ),
-        ],
-      ),
+      child: constructGrid(context),
     );
   }
-}
 
-class HomeGridItem extends StatelessWidget {
-  final Map config;
-  const HomeGridItem({Key? key, required this.config}) : super(key: key);
+  /// 循环构建横向排列的 Widget
+  Widget constructGrid(BuildContext context) {
+    List<Widget> loopList = [];
+    for (var element in list) {
+      loopList.add(HomeGridItem(context, element));
+    }
 
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: loopList,
+    );
+  }
+
+  Widget HomeGridItem(BuildContext context, Map config) {
     return Container(
       child: GestureDetector(
         child: Column(
@@ -49,8 +45,8 @@ class HomeGridItem extends StatelessWidget {
           ],
         ),
         onTap: () {
-          print('${this.config['label']}');
-          Toast.show('${this.config['label']}', context);
+          print('${config['label']}');
+          Toast.show('${config['label']}', context);
         },
       ),
     );

@@ -15,7 +15,15 @@ class HomePage extends StatelessWidget {
           children: [
             HomeSwiper(),
             HomeGrid(),
-            HomeList(),
+            HomeList(
+              list: [
+                [1, 1, 1, 1, 1],
+                [1, 1, 1, 1, 1],
+                [1, 1, 1, 1, 1],
+                [1, 1, 1, 1, 1],
+                [1, 1, 1, 1, 1],
+              ],
+            ),
           ],
         ),
       ),
