@@ -1,7 +1,7 @@
 // 首页网格
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:toast/toast.dart';
+import 'package:gamestation/tool/ToastCom.dart';
 
 class HomeGrid extends StatelessWidget {
   final list = [
@@ -15,7 +15,7 @@ class HomeGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
-      color: Colors.blueGrey,
+      color: Colors.deepPurpleAccent,
       height: 60,
       child: constructGrid(context),
     );
@@ -35,20 +35,22 @@ class HomeGrid extends StatelessWidget {
   }
 
   Widget HomeGridItem(BuildContext context, Map config) {
-    return Container(
-      child: GestureDetector(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            config['icon'],
-            Text(config['label']),
-          ],
+    return GestureDetector(
+      child: Container(
+        child: GestureDetector(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              config['icon'],
+              Text(config['label']),
+            ],
+          ),
         ),
-        onTap: () {
-          print('${config['label']}');
-          Toast.show('${config['label']}', context);
-        },
       ),
+      onTap: () {
+        print('${config['label']}');
+        ToastCom.show('${config['label']}', context);
+      },
     );
   }
 }

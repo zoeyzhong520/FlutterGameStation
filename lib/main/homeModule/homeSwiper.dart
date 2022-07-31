@@ -17,8 +17,11 @@ class _HomeSwiperState extends State<HomeSwiper> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
+      alignment: Alignment.center,
       color: Colors.amber,
       height: 240,
+      width: MediaQuery.of(context).size.width,
+      child: Text('我是Banner'),
     );
   }
 }

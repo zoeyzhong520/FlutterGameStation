@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'home.dart';
 import 'strategy.dart';
 import 'profile.dart';
+import 'treasure.dart';
 
 class IndexPage extends StatefulWidget {
   _IndexPageState createState() => _IndexPageState();
@@ -13,12 +14,19 @@ class IndexPage extends StatefulWidget {
 class _IndexPageState extends State<IndexPage> {
   final List<BottomNavigationBarItem> botomTabs = [
     BottomNavigationBarItem(icon: Icon(CupertinoIcons.home), label: '首页'),
-    BottomNavigationBarItem(icon: Icon(CupertinoIcons.wand_stars), label: '攻略'),
     BottomNavigationBarItem(
-        icon: Icon(CupertinoIcons.profile_circled), label: '我的'),
+        icon: Icon(CupertinoIcons.game_controller), label: '宝库'),
+    BottomNavigationBarItem(icon: Icon(CupertinoIcons.wand_stars), label: '攻略'),
+    // BottomNavigationBarItem(
+    //     icon: Icon(CupertinoIcons.profile_circled), label: '我的'),
   ];
 
-  final List tableBodies = [HomePage(), StrategyPage(), ProfilePage()];
+  final List tableBodies = [
+    HomePage(),
+    TreasurePage(),
+    StrategyPage(),
+    // ProfilePage()
+  ];
 
   int currentIndex = 0;
   var currentPage;

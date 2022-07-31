@@ -26,7 +26,6 @@ class _HomeListState extends State<HomeList> {
     List<Widget> loopList = [];
     for (var element in widget.list) {
       loopList.add(Container(
-        margin: EdgeInsets.only(top: 10),
         height: 120,
         child: ListView.builder(
           itemBuilder: _cellForItem,
@@ -46,9 +45,11 @@ class _HomeListState extends State<HomeList> {
     final screenSize = MediaQuery.of(context).size;
 
     return Container(
-        color: Colors.primaries[index],
-        width: screenSize.width / 3,
+        margin: EdgeInsets.fromLTRB(10, 10, 0, 0),
+        color: Colors.teal,
+        width: (screenSize.width - 40) / 3,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('我是标题'),
             Text('我是内容${index + 1}'),
